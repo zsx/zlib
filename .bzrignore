@@ -2,3 +2,4 @@
 ./win32/**/*.ncb
 ./win32/**/*.suo
 ./win32/**/Win32
+./win32/**/*.sln.cache
