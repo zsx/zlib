@@ -4,7 +4,7 @@
 	Version="9.00"
 	Name="libz"
 	ProjectGUID="{E4B4ADF6-81A7-46E2-80AF-4D16EAA12B18}"
-	RootNamespace="libz"
+	RootNamespace="zlib"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="131072"
 	>
@@ -32,29 +32,26 @@
 				Name="VCPreBuildEventTool"
 			/>
 			<Tool
-				Name="SymbolsGeneratorTool"
+				Name="VCCustomBuildTool"
 			/>
 			<Tool
-				Name="VCCustomBuildTool"
+				Name="DotInGeneratorTool"
+				Substitute="@VERSION@/$(ZLibVersion);@prefix@/$(OutDir);@exec_prefix@/${prefix};@libdir@/${prefix}\/lib;@includedir@/${prefix}\/include"
+			/>
+			<Tool
+				Name="PkgConfigTool"
 			/>
 			<Tool
 				Name="SEDTool"
 			/>
 			<Tool
-				Name="OAHdepsPkgConfigTool"
-			/>
-			<Tool
-				Name="DotInGeneratorTool"
+				Name="SymbolsGeneratorTool"
 			/>
 			<Tool
 				Name="GObjectGenMarshalTool"
 			/>
 			<Tool
 				Name="GObjectMkEnumsTemplateTool"
-			/>
-			<Tool
-				Name="PkgConfigInstallerTool"
-				Substitute="@VERSION@/$(ZLibVersion);@prefix@/\$\(OAH_PREFIX_PATH\);@exec_prefix@/${prefix};@libdir@/${prefix}\/lib;@includedir@/${prefix}\/include"
 			/>
 			<Tool
 				Name="HeaderInstallerTool"
@@ -82,7 +79,6 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				ModuleDefinitionFile="..\zlib.def"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -117,29 +113,26 @@
 				Name="VCPreBuildEventTool"
 			/>
 			<Tool
-				Name="SymbolsGeneratorTool"
+				Name="VCCustomBuildTool"
 			/>
 			<Tool
-				Name="VCCustomBuildTool"
+				Name="DotInGeneratorTool"
+				Substitute="@VERSION@/$(ZLibVersion);@prefix@/$(OutDir);@exec_prefix@/${prefix};@libdir@/${prefix}\/lib;@includedir@/${prefix}\/include"
+			/>
+			<Tool
+				Name="PkgConfigTool"
 			/>
 			<Tool
 				Name="SEDTool"
 			/>
 			<Tool
-				Name="OAHdepsPkgConfigTool"
-			/>
-			<Tool
-				Name="DotInGeneratorTool"
+				Name="SymbolsGeneratorTool"
 			/>
 			<Tool
 				Name="GObjectGenMarshalTool"
 			/>
 			<Tool
 				Name="GObjectMkEnumsTemplateTool"
-			/>
-			<Tool
-				Name="PkgConfigInstallerTool"
-				Substitute="@VERSION@/$(ZLibVersion);@prefix@/\$\(OAH_PREFIX_PATH\);@exec_prefix@/${prefix};@libdir@/${prefix}\/lib;@includedir@/${prefix}\/include"
 			/>
 			<Tool
 				Name="HeaderInstallerTool"
@@ -167,7 +160,6 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				ModuleDefinitionFile="..\zlib.def"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -202,29 +194,26 @@
 				Name="VCPreBuildEventTool"
 			/>
 			<Tool
-				Name="SymbolsGeneratorTool"
+				Name="VCCustomBuildTool"
 			/>
 			<Tool
-				Name="VCCustomBuildTool"
+				Name="DotInGeneratorTool"
+				Substitute="@VERSION@/$(ZLibVersion);@prefix@/$(OutDir);@exec_prefix@/${prefix};@libdir@/${prefix}\/lib;@includedir@/${prefix}\/include"
+			/>
+			<Tool
+				Name="PkgConfigTool"
 			/>
 			<Tool
 				Name="SEDTool"
 			/>
 			<Tool
-				Name="OAHdepsPkgConfigTool"
-			/>
-			<Tool
-				Name="DotInGeneratorTool"
+				Name="SymbolsGeneratorTool"
 			/>
 			<Tool
 				Name="GObjectGenMarshalTool"
 			/>
 			<Tool
 				Name="GObjectMkEnumsTemplateTool"
-			/>
-			<Tool
-				Name="PkgConfigInstallerTool"
-				Substitute="@VERSION@/$(ZLibVersion);@prefix@/\$\(OAH_PREFIX_PATH\);@exec_prefix@/${prefix};@libdir@/${prefix}\/lib;@includedir@/${prefix}\/include"
 			/>
 			<Tool
 				Name="HeaderInstallerTool"
@@ -252,7 +241,6 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				ModuleDefinitionFile="..\zlib.def"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -286,23 +274,29 @@
 				Name="VCPreBuildEventTool"
 			/>
 			<Tool
-				Name="PkgConfigInstallerTool"
-				Substitute="@VERSION@/$(ZLibVersion);@prefix@/\$\(OAH_PREFIX_PATH\);@exec_prefix@/${prefix};@libdir@/${prefix}\/lib;@includedir@/${prefix}\/include"
-			/>
-			<Tool
-				Name="HeaderInstallerTool"
-			/>
-			<Tool
 				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="DotInGeneratorTool"
+				Substitute="@VERSION@/$(ZLibVersion);@prefix@/$(OutDir);@exec_prefix@/${prefix};@libdir@/${prefix}\/lib;@includedir@/${prefix}\/include"
+			/>
+			<Tool
+				Name="PkgConfigTool"
+			/>
+			<Tool
+				Name="SEDTool"
+			/>
+			<Tool
+				Name="SymbolsGeneratorTool"
 			/>
 			<Tool
 				Name="GObjectGenMarshalTool"
 			/>
 			<Tool
-				Name="GObjectMkEnumsTool"
+				Name="GObjectMkEnumsTemplateTool"
 			/>
 			<Tool
-				Name="GenSDKVSPropsTool"
+				Name="HeaderInstallerTool"
 			/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"
@@ -327,7 +321,6 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				ModuleDefinitionFile="..\zlib.def"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -362,23 +355,29 @@
 				Name="VCPreBuildEventTool"
 			/>
 			<Tool
-				Name="PkgConfigInstallerTool"
-				Substitute="@VERSION@/$(ZLibVersion);@prefix@/\$\(OAH_PREFIX_PATH\);@exec_prefix@/${prefix};@libdir@/${prefix}\/lib;@includedir@/${prefix}\/include"
-			/>
-			<Tool
-				Name="HeaderInstallerTool"
-			/>
-			<Tool
 				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="DotInGeneratorTool"
+				Substitute="@VERSION@/$(ZLibVersion);@prefix@/$(OutDir);@exec_prefix@/${prefix};@libdir@/${prefix}\/lib;@includedir@/${prefix}\/include"
+			/>
+			<Tool
+				Name="PkgConfigTool"
+			/>
+			<Tool
+				Name="SEDTool"
+			/>
+			<Tool
+				Name="SymbolsGeneratorTool"
 			/>
 			<Tool
 				Name="GObjectGenMarshalTool"
 			/>
 			<Tool
-				Name="GObjectMkEnumsTool"
+				Name="GObjectMkEnumsTemplateTool"
 			/>
 			<Tool
-				Name="GenSDKVSPropsTool"
+				Name="HeaderInstallerTool"
 			/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"
@@ -403,7 +402,6 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				ModuleDefinitionFile="..\zlib.def"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -438,23 +436,29 @@
 				Name="VCPreBuildEventTool"
 			/>
 			<Tool
-				Name="PkgConfigInstallerTool"
-				Substitute="@VERSION@/$(ZLibVersion);@prefix@/\$\(OAH_PREFIX_PATH\);@exec_prefix@/${prefix};@libdir@/${prefix}\/lib;@includedir@/${prefix}\/include"
-			/>
-			<Tool
-				Name="HeaderInstallerTool"
-			/>
-			<Tool
 				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="DotInGeneratorTool"
+				Substitute="@VERSION@/$(ZLibVersion);@prefix@/$(OutDir);@exec_prefix@/${prefix};@libdir@/${prefix}\/lib;@includedir@/${prefix}\/include"
+			/>
+			<Tool
+				Name="PkgConfigTool"
+			/>
+			<Tool
+				Name="SEDTool"
+			/>
+			<Tool
+				Name="SymbolsGeneratorTool"
 			/>
 			<Tool
 				Name="GObjectGenMarshalTool"
 			/>
 			<Tool
-				Name="GObjectMkEnumsTool"
+				Name="GObjectMkEnumsTemplateTool"
 			/>
 			<Tool
-				Name="GenSDKVSPropsTool"
+				Name="HeaderInstallerTool"
 			/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"
@@ -479,7 +483,6 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				ModuleDefinitionFile="..\zlib.def"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -701,50 +704,12 @@
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
 			<File
+				RelativePath="$(IntDir)\zlib.pc"
+				>
+			</File>
+			<File
 				RelativePath="..\..\zlib.pc.in"
 				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="PkgConfigInstallerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="PkgConfigInstallerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="ReleaseWdkCrt|Win32"
-					>
-					<Tool
-						Name="PkgConfigInstallerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|x64"
-					>
-					<Tool
-						Name="PkgConfigInstallerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|x64"
-					>
-					<Tool
-						Name="PkgConfigInstallerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="ReleaseWdkCrt|x64"
-					>
-					<Tool
-						Name="PkgConfigInstallerTool"
-					/>
-				</FileConfiguration>
 			</File>
 		</Filter>
 	</Files>

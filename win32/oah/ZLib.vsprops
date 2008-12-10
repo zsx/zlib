@@ -3,11 +3,13 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="ZLib"
+	InheritedPropertySheets="$(OAH_INSTALLED_PATH)\vsprops\oah-PC.vsprops"
 	>
 	<Tool
 		Name="VCLinkerTool"
 		OutputFile="$(OutDir)\bin\$(ProjectName).dll"
 		ImportLibrary="$(OutDir)\lib\$(TargetName).lib"
+		ModuleDefinitionFile="..\zlib.def"
 	/>
 	<UserMacro
 		Name="ZLibMajorVersion"
