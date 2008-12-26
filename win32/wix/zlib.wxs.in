@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Module Id='zlib' Version='@VERSION@.0' Language="1033">
+		<Package Id="{1431801E-4AF2-4ede-8D0E-5C035C25964D}"
+				Description="zlib data compression library"
+				Manufacturer="Free Software Community" InstallerVersion="300" />
+
+		<Directory Id='TARGETDIR' Name='SourceDir'>
+			<Directory Id='MODULE_DIR' Name='.'>
+				<Component Id="libz" Guid="{14D031B7-6D77-4a33-8D38-1961241E1F07}">
+					<File Id="libz.dll" Source="..\oah\Win32\Release\bin\libz.dll" />
+				</Component>
+			</Directory>
+		</Directory>
+	</Module>
+</Wix>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Module Id="zlibdev" Version="@VERSION@.0" Language="1033">
+		<Package Id="{C5D1668A-31AE-4c80-83D4-5E95FDD45935}"
+				Description="Development package without source code, but includes: headers, import libraries, binaries and pkg-config files"
+				Manufacturer="Free Software Community" InstallerVersion="300" />
+
+		<Dependency RequiredId="zlib.1431801E_4AF2_4EDE_8D0E_5C035C25964D" RequiredLanguage="0" RequiredVersion="@VERSION@" />
+
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="MODULE_DIR" Name=".">
+				<Directory Id="ModuleInclude" Name="include">
+					<Component Id="includes" Guid="{893E9F6C-8779-4941-A86D-1F406F72C956}">
+						%(include_files)s
+					</Component>
+				</Directory>
+
+				<Directory Id="ModuleLib" Name="lib">
+					<Component Id="libs" Guid="{C964E13F-9B76-4f77-8A24-8B0DF6997264}">
+						%(lib_files)s
+					</Component>
+
+					<Directory Id="LibPkgConfig" Name="pkgconfig">
+						<Component Id="pcs" Guid="{E8003331-821C-4802-B05A-3E5C543777B2}">
+							%(pc_files)s
+						</Component>
+					</Directory>
+				</Directory>
+
+				<Directory Id="ModuleRedist" Name="redist">
+					<Component Id="msms" Guid="{51DF8865-6844-4417-974B-C31BF8E214C4}">
+						<File Id="zlib.msm" Source="Win32\zlib.msm" />
+					</Component>
+				</Directory>
+			</Directory>
+		</Directory>
+	</Module>
+</Wix>
