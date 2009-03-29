@@ -29,10 +29,7 @@
 		<!-- Directory structure -->
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Directory Id="FOSS_PRODUCT_DIR">
-				<Directory Id="FossBinDir" Name="bin">
-					<Merge Id='ZLib' Language='1033' SourceFile='Win32\zlib.msm' DiskId='1' />
-				</Directory>
-
+				<Merge Id='ZLib' Language='1033' SourceFile='Win32\zlib.msm' DiskId='1' />
 				<Merge Id='ZLibDev' Language='1033' SourceFile='Win32\zlib-dev.msm' DiskId='1' />
 
 				<Directory Id="ModuleRedist" Name="redist">

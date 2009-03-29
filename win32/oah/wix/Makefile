@@ -7,7 +7,7 @@
 !ENDIF
 
 !IFNDEF release_path
-release_path=..\oah\Win32\Release
+release_path=..\Win32\Release
 !  MESSAGE release_path not defined, but set to $(release_path)
 !ENDIF
 
@@ -20,7 +20,7 @@ PDBDir=$(output)\pdb
 
 # Tools
 LIGHT=light.exe /nologo /o $(output)\$@ /pdbout $(PDBDir)\$*.wixpdb
-TEMPLATE_TOOL=wixt "$?" $(release_path) .
+TEMPLATE_TOOL=%OAH_INSTALLED_PATH%bin\wixt "$?" $(release_path) .
 
 ###################
 # makefile targets
