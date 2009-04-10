@@ -7,8 +7,6 @@
 	>
 	<Tool
 		Name="VCLinkerTool"
-		OutputFile="$(OutDir)\bin\$(ProjectName).dll"
-		ImportLibrary="$(OutDir)\lib\$(TargetName).lib"
 		ModuleDefinitionFile="..\zlib.def"
 	/>
 	<UserMacro
