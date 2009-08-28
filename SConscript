@@ -1,8 +1,6 @@
 # vim: set ft=python
 
-import os
-
-env = Environment()
+Import('env prefix')
 
 comps = "adler32 compress crc32 gzio uncompr deflate trees zutil inflate infback inftrees inffast".split()
 
@@ -30,26 +28,11 @@ dll_name = 'libz-msvcrt90'
 dll_full_name=dll_name + env['SHLIBSUFFIX']
 dll = env.SharedLibrary(target=[dll_name, 'libz.lib'], source=OBJS + ['win32/zlib.def',])
 
-def dot_in_fun(target, source, env):
-	if not env.has_key('DOT_IN_SUBS'):
-		raise Exception("DOT_IN_SUBS is not set in env")
-	t = file(target[0].rstr(), 'w')
-	s = file(source[0].rstr(), 'r')
-	for l in s.readlines():
-		for k, v in env['DOT_IN_SUBS'].items():
-			l = l.replace(k, v)
-		t.write(l)
-	t.close()
-	s.close()
-
-dot_in_processor = Builder(action= dot_in_fun, src_suffix = '.in')
-prefix=os.path.expanduser(r'~\FOSS\Debug')
 env['DOT_IN_SUBS'] = {'@VERSION@': '1.2.4beta1',
 					  '@prefix@': prefix,
  					  '@exec_prefix@': '${prefix}/bin',
 					  '@libdir@': '${prefix}/lib',
 					  '@includedir@': '${prefix}/include'}
-env.Append(BUILDERS={'DotIn': dot_in_processor})
 
 env.DotIn('zlib.pc', 'zlib.pc.in')
 
