@@ -1,4 +1,5 @@
 # vim: ft=python expandtab
+
 import os
 from site_init import GBuilder, Initialize
 
@@ -11,6 +12,12 @@ env = Environment(variables = opts,
                   ENV=os.environ, tools = ['default', GBuilder], PDB = 'libz.pdb')
 
 Initialize(env)
+
+Initialize(env)
+env.Append(CPPPATH=['#'])
+env.Append(CFLAGS=env['DEBUG_CFLAGS'])
+env.Append(CPPDEFINES=env['DEBUG_CPPDEFINES'])
+
 
 comps = "adler32 compress crc32 gzio uncompr deflate trees zutil inflate infback inftrees inffast".split()
 
@@ -38,7 +45,7 @@ dll_name = 'libz' + env['LIB_SUFFIX']
 dll_full_name=dll_name + env['SHLIBSUFFIX']
 env.Append(CFLAGS = env['DEBUG_CFLAGS'])
 env.RES('win32/zlib1.res', 'win32/zlib1.rc')
-dll = env.SharedLibrary(target=[dll_name, 'libz.lib'], source=OBJS + ['win32/zlib.def', 'win32/zlib1.res'])
+dll = env.SharedLibrary(target=[dll_name, 'z.lib'], source=OBJS + ['win32/zlib.def', 'win32/zlib1.res'])
 
 env.AddPostAction(dll, 'mt.exe -nologo -manifest ${TARGET}.manifest -outputresource:$TARGET;2')
 
@@ -53,7 +60,7 @@ env.DotIn('zlib.pc', 'zlib.pc.in')
 env.Alias('install', env.Install('$PREFIX/lib/pkgconfig', 'zlib.pc'))
 env.Alias('install', env.Install('$PREFIX/include', ['zlib.h', 'zconf.h']))
 env.Alias('install', env.Install('$PREFIX/bin', dll_full_name))
-env.Alias('install', env.Install('$PREFIX/lib', 'libz.lib'))
+env.Alias('install', env.Install('$PREFIX/lib', 'z.lib'))
 
 if env['DEBUG']:
 	env.Alias('install', env.Install('$PREFIX/pdb', env['PDB']))
