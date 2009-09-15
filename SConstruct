@@ -13,6 +13,10 @@ env = Environment(variables = opts,
 
 Initialize(env)
 
+env.Append(CPPPATH=['#'])
+env.Append(CFLAGS=env['DEBUG_CFLAGS'])
+env.Append(CPPDEFINES=env['DEBUG_CPPDEFINES'])
+
 Initialize(env)
 env.Append(CPPPATH=['#'])
 env.Append(CFLAGS=env['DEBUG_CFLAGS'])
@@ -61,6 +65,7 @@ env.Alias('install', env.Install('$PREFIX/lib/pkgconfig', 'zlib.pc'))
 env.Alias('install', env.Install('$PREFIX/include', ['zlib.h', 'zconf.h']))
 env.Alias('install', env.Install('$PREFIX/bin', dll_full_name))
 env.Alias('install', env.Install('$PREFIX/lib', 'z.lib'))
+env.Alias('install', env.InstallAs('$PREFIX/lib/libz.lib', 'z.lib'))
 
 if env['DEBUG']:
 	env.Alias('install', env.Install('$PREFIX/pdb', env['PDB']))
