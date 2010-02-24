@@ -1,10 +1,10 @@
 # vim: ft=python expandtab
 
 import os
-from site_init import GBuilder, Initialize
+from site_init import *
 
 opts = Variables()
-opts.Add(PathVariable('PREFIX', 'Installation prefix', os.path.expanduser('~/FOSS'), PathVariable.PathIsDirCreate))
+opts.Add(PathVariable('PREFIX', 'InstallDevation prefix', os.path.expanduser('~/FOSS'), PathVariable.PathIsDirCreate))
 opts.Add(BoolVariable('DEBUG', 'Build with Debugging information', 0))
 opts.Add(PathVariable('PERL', 'Path to the executable perl', r'C:\Perl\bin\perl.exe', PathVariable.PathIsFile))
 
@@ -53,7 +53,8 @@ dll = env.SharedLibrary(target=[dll_name, 'z.lib'], source=OBJS + ['win32/zlib.d
 
 env.AddPostAction(dll, 'mt.exe -nologo -manifest ${TARGET}.manifest -outputresource:$TARGET;2')
 
-env['DOT_IN_SUBS'] = {'@VERSION@': '1.2.4beta1',
+version='1.2.4beta1'
+env['DOT_IN_SUBS'] = {'@VERSION@': version,
 					  '@prefix@': env['PREFIX'],
  					  '@exec_prefix@': '${prefix}/bin',
 					  '@libdir@': '${prefix}/lib',
@@ -61,11 +62,14 @@ env['DOT_IN_SUBS'] = {'@VERSION@': '1.2.4beta1',
 
 env.DotIn('zlib.pc', 'zlib.pc.in')
 
-env.Alias('install', env.Install('$PREFIX/lib/pkgconfig', 'zlib.pc'))
-env.Alias('install', env.Install('$PREFIX/include', ['zlib.h', 'zconf.h']))
-env.Alias('install', env.Install('$PREFIX/bin', dll_full_name))
-env.Alias('install', env.Install('$PREFIX/lib', 'z.lib'))
-env.Alias('install', env.InstallAs('$PREFIX/lib/libz.lib', 'z.lib'))
+InstallRun('$PREFIX/bin', dll_full_name, env)
+InstallDev('$PREFIX/lib/pkgconfig', 'zlib.pc', env)
+InstallDev('$PREFIX/include', ['zlib.h', 'zconf.h'], env)
+InstallDev('$PREFIX/lib', 'z.lib', env)
+InstallDevAs('$PREFIX/lib/libz.lib', 'z.lib', env)
 
 if env['DEBUG']:
-	env.Alias('install', env.Install('$PREFIX/pdb', env['PDB']))
+    InstallDev('$PREFIX/pdb', env['PDB'], env)
+env['PACKAGE_NAME'] = 'zlib'
+env['PACKAGE_VERSION'] = version
+DumpInstalledFiles(env)
