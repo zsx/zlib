@@ -7,6 +7,7 @@ opts = Variables()
 opts.Add(PathVariable('PREFIX', 'InstallDevation prefix', os.path.expanduser('~/FOSS'), PathVariable.PathIsDirCreate))
 opts.Add(BoolVariable('DEBUG', 'Build with Debugging information', 0))
 opts.Add(PathVariable('PERL', 'Path to the executable perl', r'C:\Perl\bin\perl.exe', PathVariable.PathIsFile))
+opts.Add(BoolVariable('WITH_OSMSVCRT', 'Link with the os supplied msvcrt.dll instead of the one supplied by the compiler (msvcr90.dll, for instance)', 0))
 
 env = Environment(variables = opts,
                   ENV=os.environ, tools = ['default', GBuilder], PDB = 'libz.pdb')
@@ -45,7 +46,7 @@ env.Depends("zutil" + env['OBJSUFFIX'], "zutil.h zlib.h zconf.h".split())
 for o in comps:
 	env.SharedObject(o + env['OBJSUFFIX'], o + ".c") 
 
-dll_name = 'libz' + env['LIB_SUFFIX']
+dll_name = 'zlib' + env['LIB_SUFFIX']
 dll_full_name=dll_name + env['SHLIBSUFFIX']
 env.Append(CFLAGS = env['DEBUG_CFLAGS'])
 env.RES('win32/zlib1.res', 'win32/zlib1.rc')
