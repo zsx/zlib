@@ -18,11 +18,10 @@ env.Append(CPPPATH=['#'])
 env.Append(CFLAGS=env['DEBUG_CFLAGS'])
 env.Append(CPPDEFINES=env['DEBUG_CPPDEFINES'])
 
-Initialize(env)
-env.Append(CPPPATH=['#'])
-env.Append(CFLAGS=env['DEBUG_CFLAGS'])
-env.Append(CPPDEFINES=env['DEBUG_CPPDEFINES'])
 
+if env['WITH_OSMSVCRT']:
+    env['LIB_SUFFIX'] = '1'
+    #env.Append(CPPDEFINES=['MSVCRT_COMPAT_STAT', 'MSVCRT_COMPAT_SPRINTF'])
 
 comps = "adler32 compress crc32 gzio uncompr deflate trees zutil inflate infback inftrees inffast".split()
 
