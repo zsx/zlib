@@ -17,6 +17,11 @@
 				  <File Id='libz.lib' Name='libz.lib' Source='libz.lib' />
 				  <File Id='z.lib' Name='z.lib' Source='z.lib' />
 			  </Component>
+			  <Directory Id='pkgconfig' Name='pkgconfig'>
+				  <Component Id='pcs' Guid='f4d17524-5828-4efc-9f35-bb25472e01b7'>
+					  <File Id='zlib.pc' Name='zlib.pc' Source='zlib.pc' />
+				  </Component>
+			  </Directory>
 		  </Directory>
 		  <Directory Id='pdb' Name='pdb'>
 			  <Component Id='pdbs' Guid='041c1ab4-87f8-40b6-83c6-22d5201c5f96'>
