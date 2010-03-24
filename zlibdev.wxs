@@ -1,0 +1,31 @@
+<?xml version='1.0'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+   <Module Id='ZlibDev' Language='1033' Version='1.2.4'>
+      <Package Id='D5F97C38-65E1-40FA-9291-DB23E9A11FD5' Description='Zlib devlopement package'
+                Comments='This is a windows installer for zlib library devlopment files'
+                Manufacturer='Gnome4Win' InstallerVersion='200' />
+ 
+      <Directory Id='TARGETDIR' Name='SourceDir'>
+		  <Directory Id='include' Name='include'>
+			  <Component Id='headers' Guid='9713f1d7-9b47-4516-b93c-b0b5b4d4e923'>
+				  <File Id='zconf.h' Name='zconf.h' Source='zconf.h' />
+				  <File Id='zlib.h' Name='zlib.h' Source='zlib.h' />
+			  </Component>
+		  </Directory>
+		  <Directory Id='lib' Name='lib'>
+			  <Component Id='libs' Guid='21a8585a-42da-482d-a7ad-d8ff62a79f31'>
+				  <File Id='libz.lib' Name='libz.lib' Source='libz.lib' />
+				  <File Id='z.lib' Name='z.lib' Source='z.lib' />
+			  </Component>
+		  </Directory>
+		  <Directory Id='pdb' Name='pdb'>
+			  <Component Id='pdbs' Guid='041c1ab4-87f8-40b6-83c6-22d5201c5f96'>
+				  <File Id='libz.pdb' Name='libz.pdb' Source='libz.pdb' />
+			  </Component>
+		  </Directory>
+      </Directory>
+	  <Dependency RequiredId='ZlibRun.B696B158_71E3_470F_98F9_39F008C100F1'
+		  RequiredLanguage='1033' RequiredVersion='1.2.4' />
+	  
+   </Module>
+</Wix>
