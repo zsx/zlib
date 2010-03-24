@@ -73,3 +73,7 @@ if env['DEBUG']:
 env['PACKAGE_NAME'] = 'zlib'
 env['PACKAGE_VERSION'] = version
 DumpInstalledFiles(env)
+
+env.Tool('wixtool', '#..')
+env.WiX('zlibrun.msm', ['zlibrun.wxs'])
+env.WiX('zlibdev.msm', ['zlibdev.wxs'])
