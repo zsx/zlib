@@ -53,7 +53,7 @@ dll = env.SharedLibrary(target=[dll_name, 'z.lib'], source=OBJS + ['win32/zlib.d
 
 env.AddPostAction(dll, 'mt.exe -nologo -manifest ${TARGET}.manifest -outputresource:$TARGET;2')
 
-version='1.2.4beta1'
+version='1.2.4'
 env['DOT_IN_SUBS'] = {'@VERSION@': version,
 					  '@prefix@': env['PREFIX'],
  					  '@exec_prefix@': '${prefix}/bin',
@@ -63,17 +63,28 @@ env['DOT_IN_SUBS'] = {'@VERSION@': version,
 env.DotIn('zlib.pc', 'zlib.pc.in')
 
 InstallRun('$PREFIX/bin', dll_full_name, env)
+env['DOT_IN_SUBS']['@DLLS@'] = generate_file_element(dll_full_name, r'bin', env)
 InstallDev('$PREFIX/lib/pkgconfig', 'zlib.pc', env)
+env['DOT_IN_SUBS']['@PCS@'] = generate_file_element('zlib.pc', r'lib\\pkgconfig', env)
 InstallDev('$PREFIX/include', ['zlib.h', 'zconf.h'], env)
+env['DOT_IN_SUBS']['@HEADERS@'] = generate_file_element(['zlib.h', 'zconf.h'], r'include', env)
 InstallDev('$PREFIX/lib', 'z.lib', env)
 InstallDevAs('$PREFIX/lib/libz.lib', 'z.lib', env)
+env['DOT_IN_SUBS']['@LIBS@'] = generate_file_element(['libz.lib', 'z.lib'], r'lib', env)
 
 if env['DEBUG']:
     InstallDev('$PREFIX/pdb', env['PDB'], env)
+    env['DOT_IN_SUBS']['@PDBS@'] = generate_file_element(env['PDB'], r'pdb', env)
+
+env.DotIn('zlibdev.wxs', 'zlibdev.wxs.in')
+env.DotIn('zlibrun.wxs', 'zlibrun.wxs.in')
+
 env['PACKAGE_NAME'] = 'zlib'
 env['PACKAGE_VERSION'] = version
 DumpInstalledFiles(env)
 
-env.Tool('wixtool', '#..')
-env.WiX('zlibrun.msm', ['zlibrun.wxs'])
-env.WiX('zlibdev.msm', ['zlibdev.wxs'])
+InstallRun('$PREFIX/wxs', 'zlibrun.wxs', env)
+InstallDev('$PREFIX/wxs', 'zlibdev.wxs', env)
+#env.Tool('wixtool', '#..')
+#env.WiX('zlibrun.msm', ['zlibrun.wxs'])
+#env.WiX('zlibdev.msm', ['zlibdev.wxs'])

@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
-   <Module Id='ZlibRun' Language='1033' Version='1.2.4'>
+   <Module Id='ZlibRun' Language='1033' Version='@VERSION@'>
       <Package Id='B696B158-71E3-470F-98F9-39F008C100F1' Description='Zlib runtime package'
                 Comments='This is a windows installer for zlib library runtime files'
                 Manufacturer='Gnome4Win' InstallerVersion='200' />
@@ -8,7 +8,7 @@
       <Directory Id='TARGETDIR' Name='SourceDir'>
 		  <Directory Id='dlls' Name='bin'>
 			  <Component Id='dlls' Guid='0d174f6a-3763-49e2-bcfe-18aa3e347b31'>
-				  <File Id='libz.dll' Name='libz-msvcrt90d.dll' Source='libz-msvcrt90d.dll' />
+				  @DLLS@
 			  </Component>
 		  </Directory>
       </Directory>
